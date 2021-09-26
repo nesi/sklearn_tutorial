@@ -119,8 +119,6 @@ def visualize_tree(estimator, X, y, boundaries=True,
     if boundaries:
         plot_boundaries(0, plt.xlim(), plt.ylim())
 
-    plt.show()
-
 
 def plot_tree_interactive(X, y):
     from sklearn.tree import DecisionTreeClassifier
@@ -129,7 +127,8 @@ def plot_tree_interactive(X, y):
         clf = DecisionTreeClassifier(max_depth=depth, random_state=0)
         visualize_tree(clf, X, y)
 
-    return interact_adaptor(interactive_tree, depth=(1, 5))
+    from ipywidgets import interact
+    return interact(interactive_tree, depth=(1, 5))
 
 
 def plot_kmeans_interactive(min_clusters=1, max_clusters=6):
